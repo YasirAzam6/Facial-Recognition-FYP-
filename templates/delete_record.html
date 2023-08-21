@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Design by foolishdeveloper.com -->
+    <title>Login Page</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <!-- bootstrap Links-->
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--Stylesheet-->
+     <style media="screen">
+        body {
+            user-select: none;
+            -webkit-user-select: none;
+            background-image: url('{% static "images/bg4.jpg" %}');
+            background-size: cover;
+            background-position: cover;
+            background-color: #6495ED;
+          }
+
+
+    </style> 
+</head>
+<body>
+    <div class="container">
+        <h3 style="color:white;">Delete Record Here</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="{{ form.record_id.id_for_label_tag }}">Record ID</label>
+
+           <span style="background-color:grey;"> {{ form.record_id }} <span>
+
+            <button  style="background-image: linear-gradient(to right, #8B939A , #5B6467);margin-top:15px;"
+             type="submit" class="btn  btn-lg">Delete Record</button>
+
+            <a style="background-image: linear-gradient(to right, #8B939A , #5B6467);margin-top:15px;color:black;"
+             href="{% url 'Crud' %}" class="btn  text-decoration-none">Back</a>
+        </form>
+
+        {% if success_message %}
+            <div class="alert alert-success">
+                {{ success_message }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

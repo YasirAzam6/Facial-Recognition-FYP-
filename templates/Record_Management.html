@@ -1,0 +1,163 @@
+  {% load static %}
+  <!doctype html>
+  <html lang="en">
+    
+    <head>
+      <style>
+
+        body {
+          user-select: none;
+          -webkit-user-select: none;
+          background-image: url('{% static "images/bg.jpg" %}');
+          background-size: cover;
+          background-position: cover;
+          background-color: #6495ED;
+        }
+
+  .button-49,
+  .button-49:after {
+    width: 190px;
+    height: 76px;
+    line-height: 78px;
+    font-size: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    background: linear-gradient(45deg, transparent 5%, #4169E1 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 1x;
+    outline: transparent;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .button-49:after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    
+    content: 'ALTERNATE TEXT';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+    text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+    clip-path: var(--slice-0);
+  }
+
+  .button-49:hover:after {
+    animation: 1s glitch;
+    animation-timing-function: steps(2, end);
+  }
+
+  @keyframes glitch {
+    0% {
+      clip-path: var(--slice-1);
+      transform: translate(-20px, -10px);
+    }
+    10% {
+      clip-path: var(--slice-3);
+      transform: translate(10px, 10px);
+    }
+    20% {
+      clip-path: var(--slice-1);
+      transform: translate(-10px, 10px);
+    }
+    30% {
+      clip-path: var(--slice-3);
+      transform: translate(0px, 5px);
+    }
+    40% {
+      clip-path: var(--slice-2);
+      transform: translate(-5px, 0px);
+    }
+    50% {
+      clip-path: var(--slice-3);
+      transform: translate(5px, 0px);
+    }
+    60% {
+      clip-path: var(--slice-4);
+      transform: translate(5px, 10px);
+    }
+    70% {
+      clip-path: var(--slice-2);
+      transform: translate(-10px, 10px);
+    }
+    80% {
+      clip-path: var(--slice-5);
+      transform: translate(20px, -10px);
+    }
+    90% {
+      clip-path: var(--slice-1);
+      transform: translate(-10px, 0px);
+    }
+    100% {
+      clip-path: var(--slice-1);
+      transform: translate(0);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .button-49,
+    .button-49:after {
+      width: 200px;
+      height: 86px;
+      line-height: 88px;
+    }
+  }
+      </style>
+
+
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+      <title>Scan - O - Spectacles</title>
+    </head>
+    <body>
+      <div >
+      {% comment %} <h1 style='margin-top:70px;text-align:center; font-size:4vw;'>Scan - O - Spectacles Screen 2</h1> {% endcomment %}
+      <div class='form' style="text-align: center;margin-left:140px;">
+        <button class='button-49' style="display: block; margin: auto; margin-top:40px;background-image: linear-gradient(to right, #8B939A , #5B6467);" onclick="openWebCamera()">Open Web Camera</button>
+
+        <script>
+          function openWebCamera() {
+            // Add the code here to execute the recognize_face or findEncodings functions
+            // For example:
+            // Call the recognize_face function using AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/recognize_face', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log('Facial recognition completed.');
+                }
+            };
+            xhr.send();
+          }
+        </script>
+
+        <a style="display: block; margin: auto; margin-top:30px;background-image: linear-gradient(to right, #8B939A , #5B6467);" href="{% url 'Crud' %}"
+         class="button-49 text-decoration-none text-white">Record Management</a>
+
+
+          <a style="display: block; margin: auto; margin-top:30px;background-image: linear-gradient(to right, #8B939A , #5B6467);" href="{% url 'logout' %}" class="button-49 text-decoration-none text-white">Logout</a>
+          <a style="display: block; margin: auto; margin-top:30px;background-image: linear-gradient(to right, #8B939A , #5B6467);" href="{% url 'login' %}" class="button-49 text-decoration-none text-white">Back</a>
+      </div>    
+      <div/>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+  </html>
